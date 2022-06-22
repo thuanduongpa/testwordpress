@@ -1,16 +1,16 @@
-name: test
+name: thuanduongtest
 on:
   push:
-    branches: [ main ]
-
+    branches: [ master ]
 jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Login Docker Hub
-    uses: docker/login-action@v1
-    with:
-      username: ${{ secrets.DOCKERHUB_USERNAME }}
-      password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
