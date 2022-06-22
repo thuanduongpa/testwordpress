@@ -1,7 +1,7 @@
 name: test
 on:
   push:
-    branches: [ staging ]
+    branches: [ main ]
 
 jobs:
   docker:
