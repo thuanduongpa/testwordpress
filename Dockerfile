@@ -43,7 +43,7 @@ RUN usermod -u 1000 www-data
 WORKDIR /var/www/
 COPY . .
 
-RUN composer install
+RUN sudo composer install
 
 EXPOSE 9000
 CMD ["php-fpm"]
