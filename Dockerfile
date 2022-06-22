@@ -1,9 +1,9 @@
-FROM python:3.7-slim
+FROM ubuntu:latest
 
-WORKDIR app
+EXPOSE 80
 
-COPY requirements.txt ./
+RUN apt-get update && \
+    apt-get install nginx -y && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN pip install -r requirements.txt
-
-CMD ["sh", "-c", "gunicorn --bind :$PORT --workers 1 --threads 4 --timeout 0 main:app"]
+CMD ["nginx", "-g", "daemon off;"]
