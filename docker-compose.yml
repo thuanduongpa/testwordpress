@@ -8,7 +8,7 @@ services:
     environment:
       - MYSQL_DATABASE=example
     volumes:
-      - ./dbdata:/var/lib/mysql
+      - ./dbdata:/var/lib/mysql ## mount volume dbdata vào trong container path /var/lib/mysql
       #- ./db/db.sql:/docker-entrypoint-initdb.d/install_wordpress.sql #if you have db.sql of project input here
     command: '--default-authentication-plugin=mysql_native_password'
     #networks:
@@ -26,7 +26,7 @@ services:
       - WORDPRESS_DB_PASSWORD=123123jjj
       - WORDPRESS_DB_NAME=example
     volumes:
-      - ./app:/var/www/html
+      - ./app:/var/www/html ### dữ liệu wp chứa tại app, đc mount vào /var/www/html của container
    # networks:
     #  - app-network
   webserver:
@@ -38,7 +38,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./app:/var/www/html
+      - ./app:/var/www/html ### path chứa source wp bên tr
       - ./nginx-conf:/etc/nginx/conf.d
     #networks:
      # - app-network
